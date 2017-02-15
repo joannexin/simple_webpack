@@ -7,6 +7,14 @@ const config = {
 		// output path is absolute file reference bu using node helper
 		path: path.resolve(__dirname, 'build'),
 		filename: 'bundle.js'
+	},
+	module: {
+		rules: [
+			{
+				use: 'babel-loader',
+				test: /\.js$/
+			}
+		]
 	}
 };
 
