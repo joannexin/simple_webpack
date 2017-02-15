@@ -7,7 +7,8 @@ const config = {
 	output: {
 		// output path is absolute file reference bu using node helper
 		path: path.resolve(__dirname, 'build'),
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		publicPath: 'build/'
 	},
 	module: {
 		rules: [
@@ -20,6 +21,16 @@ const config = {
 					loader: 'css-loader'
 				}),
 				test: /\.css$/
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: { limit: 40000 }
+					},
+					'image-webpack-loader'
+				]
 			}
 		]
 	},
